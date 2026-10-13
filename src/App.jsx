@@ -79,8 +79,9 @@ export default function App() {
           glowIntensity={0.3}
           flareIntensity={1}
           starSpeed={0.5}
-          mouseRepulsion={true}
-          clickWarp={true}
+          mouseInteraction={false}
+          mouseRepulsion={false}
+          clickWarp={false}
           className="fullscreen-galaxy"
         />
       </div>
