@@ -27,9 +27,11 @@
 html, body {
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   margin: 0;
   padding: 0;
   overflow: hidden;
+  overscroll-behavior: none;
   background-color: var(--color-bg);
   color: var(--color-text-primary);
   font-family: var(--font-sans);
@@ -41,6 +43,7 @@ html, body {
 #root {
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
   position: relative;
 }

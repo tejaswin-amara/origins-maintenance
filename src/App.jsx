@@ -1,20 +1,32 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useSyncExternalStore } from 'react';
 import Galaxy from './Galaxy';
 import { FaInstagram, FaWhatsapp, FaLinkedinIn } from 'react-icons/fa6';
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
 import './App.css';
 
+function subscribeToReducedMotion(callback) {
+  if (typeof window === 'undefined' || !window.matchMedia) return () => {};
+  const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  mq.addEventListener('change', callback);
+  return () => mq.removeEventListener('change', callback);
+}
+
+function getReducedMotionSnapshot() {
+  if (typeof window === 'undefined' || !window.matchMedia) return false;
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+function getReducedMotionServerSnapshot() {
+  return false;
+}
+
 export default function App() {
   const heroRef = useRef(null);
-  const [reducedMotion, setReducedMotion] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setReducedMotion(mq.matches);
-    const handler = (e) => setReducedMotion(e.matches);
-    mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
-  }, []);
+  const reducedMotion = useSyncExternalStore(
+    subscribeToReducedMotion,
+    getReducedMotionSnapshot,
+    getReducedMotionServerSnapshot
+  );
 
   // Pointer position normalized to [-0.5, 0.5] relative to center
   const mouseX = useMotionValue(0);
