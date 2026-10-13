@@ -1,0 +1,369 @@
+/* ==========================================================================
+   Full Viewport Under Maintenance Layout
+   ========================================================================== */
+
+.maintenance-viewport {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #030108;
+  z-index: 1;
+  touch-action: none;
+}
+
+/* ==========================================================================
+   Background Galaxy Layer (Absolute Fullscreen)
+   ========================================================================== */
+
+.galaxy-bg-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+.fullscreen-galaxy {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Atmospheric Spatial Lighting */
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  opacity: 0.35;
+  z-index: 3;
+}
+
+.ambient-glow-top {
+  top: -15%;
+  left: 25%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(130, 70, 255, 0.55) 0%, transparent 70%);
+}
+
+.ambient-glow-bottom {
+  bottom: -20%;
+  right: 20%;
+  width: 640px;
+  height: 640px;
+  background: radial-gradient(circle, rgba(0, 210, 255, 0.42) 0%, transparent 70%);
+}
+
+/* ==========================================================================
+   Main Content Container (Centered Over Background)
+   ========================================================================== */
+
+.content-container {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  pointer-events: none; /* Passes galaxy gestures outside interactive items */
+}
+
+/* ==========================================================================
+   Floating Content Hero (Glass card background removed)
+   ========================================================================== */
+
+.floating-content-hero {
+  pointer-events: auto;
+  position: relative;
+  width: 100%;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: none;
+  box-shadow: none;
+  padding: 0.5rem 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.85rem;
+  will-change: transform;
+}
+
+/* ==========================================================================
+   Big Centered Logo & Brand Identity (Hero Scale)
+   ========================================================================== */
+
+.brand-logo-container {
+  position: relative;
+  width: 100%;
+  max-width: 1040px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.logo-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  cursor: default;
+  margin: 0 auto;
+}
+
+.brand-image {
+  width: 100%;
+  max-width: min(980px, 86vw);
+  max-height: min(480px, 48vh);
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  filter: 
+    drop-shadow(0 0 45px rgba(255, 255, 255, 0.65))
+    drop-shadow(0 8px 28px rgba(0, 0, 0, 0.95));
+  user-select: none;
+  -webkit-user-drag: none;
+  transition: filter 0.35s ease, transform 0.35s ease;
+}
+
+.brand-image:hover {
+  filter: 
+    drop-shadow(0 0 65px rgba(255, 255, 255, 0.9))
+    drop-shadow(0 10px 36px rgba(0, 0, 0, 1));
+}
+
+/* ==========================================================================
+   Typography (Apple SF / Optical Sizing & Tracking)
+   ========================================================================== */
+
+.typography-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 540px;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.maintenance-subheading {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  color: rgba(245, 245, 252, 0.88);
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  text-shadow: 
+    0 2px 14px rgba(0, 0, 0, 0.95),
+    0 0 24px rgba(0, 0, 0, 0.8);
+  font-optical-sizing: auto;
+}
+
+/* ==========================================================================
+   Social Media Pills (Apple Frosted Glass & Tactile Feedback)
+   ========================================================================== */
+
+.social-links-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 0.25rem;
+  z-index: 2;
+}
+
+.apple-social-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.8rem 1.65rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.32);
+  border-left: 1px solid rgba(255, 255, 255, 0.16);
+  border-right: 1px solid rgba(255, 255, 255, 0.16);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  text-decoration: none;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.012em;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.apple-social-pill::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, transparent 75%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.apple-social-pill:hover::before {
+  opacity: 1;
+}
+
+.social-icon {
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease;
+}
+
+/* Brand Specific Vibrant Glows */
+.social-pill-instagram:hover {
+  background: rgba(225, 48, 108, 0.2);
+  border-color: rgba(225, 48, 108, 0.7);
+  box-shadow: 
+    0 10px 30px rgba(225, 48, 108, 0.42),
+    0 0 24px rgba(131, 58, 180, 0.48),
+    inset 0 0 12px rgba(225, 48, 108, 0.25);
+  color: #ffa3d1;
+}
+
+.social-pill-instagram:hover .social-icon {
+  transform: scale(1.12) rotate(-5deg);
+  color: #ff5599;
+}
+
+.social-pill-whatsapp:hover {
+  background: rgba(37, 211, 102, 0.2);
+  border-color: rgba(37, 211, 102, 0.7);
+  box-shadow: 
+    0 10px 30px rgba(37, 211, 102, 0.42),
+    0 0 24px rgba(0, 240, 255, 0.38),
+    inset 0 0 12px rgba(37, 211, 102, 0.25);
+  color: #94ffbe;
+}
+
+.social-pill-whatsapp:hover .social-icon {
+  transform: scale(1.12) rotate(5deg);
+  color: #25d366;
+}
+
+.social-pill-linkedin:hover {
+  background: rgba(10, 102, 194, 0.22);
+  border-color: rgba(0, 180, 255, 0.7);
+  box-shadow: 
+    0 10px 30px rgba(10, 102, 194, 0.45),
+    0 0 24px rgba(0, 210, 255, 0.5),
+    inset 0 0 12px rgba(10, 102, 194, 0.3);
+  color: #a8e3ff;
+}
+
+.social-pill-linkedin:hover .social-icon {
+  transform: scale(1.12);
+  color: #00b4ff;
+}
+
+/* ==========================================================================
+   Apple Design: Accessibility Overrides
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-content-hero {
+    transition: none !important;
+    transform: none !important;
+  }
+  .apple-social-pill {
+    transition: opacity 150ms ease !important;
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .apple-social-pill {
+    background: #1e1e28 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .apple-social-pill {
+    border: 1.5px solid rgba(255, 255, 255, 0.55) !important;
+  }
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 600px) {
+  .content-container {
+    padding: 1rem 0.75rem;
+  }
+
+  .floating-content-hero {
+    gap: 1.5rem;
+    padding: 0.25rem 0;
+  }
+
+  .brand-logo-container {
+    max-width: 100%;
+  }
+
+  .brand-image {
+    max-width: min(440px, 94vw);
+    max-height: min(280px, 38vh);
+  }
+
+  .maintenance-subheading {
+    font-size: 0.95rem;
+    padding: 0 0.5rem;
+    line-height: 1.5;
+  }
+
+  .social-links-row {
+    flex-direction: column;
+    width: 100%;
+    max-width: 290px;
+    gap: 0.65rem;
+  }
+
+  .apple-social-pill {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+}
